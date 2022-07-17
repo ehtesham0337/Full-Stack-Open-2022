@@ -1,15 +1,10 @@
 import { useState } from "react"
 
-const Button = ({handleClick, text}) =>
-   <button
-    onClick = {handleClick}> 
-     {text}
-    </button> 
-
+const Button = ({handleClick, text}) => <button onClick = {handleClick}> {text} </button> 
 
 const App = () => {
   const [selected, setSelected] = useState(0)
-  
+
   const anecdotes = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -38,18 +33,30 @@ const App = () => {
     'Don\'t worry if it doesn\'t work right. If everything did, you\'d be out of a job. (Mosher\'s Law of Software Engineering)'
   ]
 
+  const [voted, setVoted] = useState(new Array(anecdotes.length).fill(0))
 
-  const randomNumGen = (min, max) => {
-    const randNum = Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + Math.ceil(min))
-    return randNum
+  const randomNumGen = (min, max) => Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min)) + Math.ceil(min))
+  
+
+  const placeVote = () => () =>{
+    const copy = [...voted]
+    copy[selected] += 1
+    setVoted(copy)
   }
   
+  const mostVoted = () => voted.indexOf(Math.max(...voted))
+  
+ 
   return (
     <div> 
-
-      <h2>{anecdotes[selected]}</h2>
-      <Button text="Next Anecdote" handleClick={() => setSelected(randomNumGen(0, anecdotes.length))}/>
- 
+      <p>{console.log(voted)}</p>
+      <h3>{anecdotes[selected]}</h3>
+      <h4>has {voted[selected]} votes</h4> 
+      <Button text="Vote" handleClick={placeVote()}/> 
+      <Button text="Next Anecdote" handleClick={() => setSelected(randomNumGen(0, anecdotes.length))}/> 
+      <h1>Anecdote with most votes</h1>
+      <h3>{anecdotes[mostVoted()]}</h3>
+      <h4>has {voted[mostVoted()]} votes </h4>
     </div>
   )
 }
