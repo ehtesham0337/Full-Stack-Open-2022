@@ -1,0 +1,27 @@
+.success-message,
+.error-message {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color: black;
+    border-radius: 20px;
+    border: 2px solid darkslategray;
+    margin: auto;
+    height: 50px;
+    margin: 20px;
+    transition: 1s;
+
+    
+  }
+ 
+.success-message {
+    background-color: lightgreen;
+}
+
+.error-message {
+    color: white;
+    background-color: crimson;
+}
