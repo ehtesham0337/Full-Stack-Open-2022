@@ -15,16 +15,19 @@ function WeatherData({city}) {
   return (
     
     weather.main ?
-    <>
-        <h1>Weather in {city}</h1>
-        <h3>Temperature | {weather.main.temp} °C</h3>
+    <div className='flex flex-col items-center mt-3'>
+        <p className='text-2xl text-zinc-200 underline'>Weather in {city}</p>
         
-        <div style={{backgroundColor: 'lightblue'}}>
+        <div style={{backgroundColor: 'lightblue'}} className='flex flex-col rounded-xl p-2 mt-3 mb-8'>
+            <div className='flex items-center'>
             <h2>{weather.weather[0].description.toUpperCase()}</h2>
             <img alt='weather-icon' src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}></img>
+            <h3>Wind | {weather.wind.speed} m/s</h3>
+            </div>
+            <p className='text-xl text-center'>Temperature | {weather.main.temp} °C</p>
         </div>
-        <h3>Wind | {weather.wind.speed} m/s</h3>
-    </>
+        
+    </div>
     :
     null
    

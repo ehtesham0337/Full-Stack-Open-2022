@@ -3,6 +3,7 @@ import axios from 'axios'
 import React from 'react'
 import Countries from './Components/Countries'
 import CountryData from './Components/CountryData'
+import './index.css'
 
 // function ApiData() {
 //   return (
@@ -37,15 +38,14 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='min-h-screen bg-sky-500'>
 
-    
-
-      Find Countries: 
-      <input type='text' value={search} onChange={searchCountry}/>
-
+      <div  className='flex justify-center pt-3 border-4 border-yellow-500 pb-2 '>
+      <p className='pr-2 text-zinc-100 '>Find Countries:</p> 
+      <input className='border-2 border-indigo-800 rounded-md' type='text' value={search} onChange={searchCountry}/>
+      </div>
        
-      <div>
+      <div className='flex flex-col items-center mt-4'>
       
         {
           countriesToShow.length === 1 ?
