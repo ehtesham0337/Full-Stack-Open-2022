@@ -1,4 +1,7 @@
-An app that shows data like the capital, area, population, languages, and the weather of countries searched.
+An app that shows data like the capital, area, languages, and the weather of the country searched.
+
+The search bar filters and displays a list of countries that contain the searched query. If the query matches exactly to one country, the data is automatically displayed.
+
 Built with React and TailwindCSS.
 
 ## Live Site
